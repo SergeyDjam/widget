@@ -1,0 +1,61 @@
+﻿<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+</head>
+<body scroll='no' onmousemove="onmousemove(event)">
+<style>
+::-webkit-scrollbar {
+      display: none; 
+}
+</style>
+<style>
+<!-- CodeStyle -->
+</style>
+<!-- html -->   
+<!-- RefLibs -->
+<script type=text/javascript>
+<!-- CodeLibs -->
+var paper;
+
+var rect_select;
+onmousemove = function(event){
+	<!-- RectSelectMove -->
+}
+
+window.onload = function(){
+    mainFunction(true);
+}
+
+window.onresize = function(){
+    mainFunction(false);
+}
+
+var mainFunction = function(init) {
+
+    var w = window,
+    d = document,
+    e = d.documentElement,
+    g = d.getElementsByTagName('body')[0];
+    width = w.innerWidth || e.clientWidth || g.clientWidth;
+    height = w.innerHeight|| e.clientHeight|| g.clientHeight;
+    if(width  != 0){
+      //resize for linux client and old webkit
+      if(navigator.userAgent.indexOf("8.0 Safari/538.15")  !== -1 ){
+        width = width - 35;
+        height = height - 15; 
+      }
+      if(init){  paper = Raphael(0,0, width, height);}
+      else{
+          paper.clear();
+          paper.setSize(width, height);
+      }
+      //TODO_PAGE_CONTEXT
+      <!-- DrawGrid -->
+      <!-- DrawWidgets -->
+      <!-- CursorHandle -->
+      <!-- RectSelectInit -->
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+﻿{
+"stepsX": 3,
+
+"stepsY": 3,
+
+"code1C": "",
+
+"widgets": [
+{
+"left": 0,
+"top": 0,
+"right": 0,
+"bottom": 0,
+"type": "Текст",
+"code1C": "Текст = \"Текст\";
+Результат.Вставить(\"text\", Текст);
+Результат.Вставить(\"bgcolor\", \"white\");
+Результат.Вставить(\"color\", \"black\");",
+"codeDraw": "var rect = paper.rect([x],[y],[w],[h]).attr({fill: '[bgcolor]' });
+var text = paper.text([x]+[w]/2, [y]+[h]/2, '[text]').attr({'font-size': [h]/2, fill: '[color]', 'font-family': '[font]', 'stroke-width': 0.5, 'stroke-opacity': 0.5, 'font-weight': 200, 'text-anchor': '[anchor]' }); 
+if( '[anchor]' == 'end') text.attr({x: [x]+[w]});
+if( '[anchor]' == 'begin') text.attr({x: [x]});
+var box = text.getBBox(); var shrink = Math.min([w]/box.width,[h]/box.height);  
+if(shrink < 1) text.attr({'font-size': [h]/2*shrink});",
+"codeLib": "" 
+},
+{
+"left":1,
+"top":0,
+"right":1,
+"bottom":0,
+"type":"Стакан выполнения",
+"code1C":"Процент = 50;\nРезультат.Вставить(\"text\", \"Стакан выполнения \" + Процент +\"%\");\nРезультат.Вставить(\"percent\", Процент);\nРезультат.Вставить(\"downcolor\", \"gray\");\nРезультат.Вставить(\"upcolor\", \"darkblue\");\nРезультат.Вставить(\"colortext\", \"red\"); ",
+"codeDraw":"var rect = paper.rect([x],[y],[w],[h]).attr({fill: '[downcolor]' });\nvar uprect = paper.rect([x],[y]+[h]*(100-[percent])/100,[w],[h]*([percent])/100).attr({fill: '[upcolor]','stroke-width':0 });\nvar text = paper.text([x]+[w]\/2, [y]+[h]\/2, '[text]').attr({'font-size': [h]\/2, fill: '[colortext]', 'font-family': '[font]', 'stroke-width': 0.5, 'stroke-opacity': 0.5, 'font-weight': 200, 'text-anchor': '[anchor]' });\nif( '[anchor]' == 'end') text.attr({x: [x]+[w]});\nif( '[anchor]' == 'begin') text.attr({x: [x]});\nvar box = text.getBBox(); var shrink = Math.min([w]\/box.width,[h]\/box.height);\nif(shrink < 1) text.attr({'font-size': [h]\/2*shrink});\ntext.mouseover( function(){ document.body.style.cursor = 'pointer'; });\ntext.mouseout( function(){ document.body.style.cursor = 'default'; });",
+"code1Click":"",
+"codeLib":"",
+"onServer":false,
+"id":"d4f762e6-c626-46f4-9598-2d891fda4437"
+},
+{
+"left":2,
+"top":0,
+"right":2,
+"bottom":0,
+"type":"Полоска выполнения",
+"code1C":"Процент = 67;\nРезультат.Вставить(\"text\", \"Полоска выполнения \" + Процент +\"%\");\nРезультат.Вставить(\"percent\", Процент);\nРезультат.Вставить(\"downcolor\", \"lightgray\");\nРезультат.Вставить(\"upcolor\", \"blue\");\nРезультат.Вставить(\"colortext\", \"black\"); ",
+"codeDraw":"var rect = paper.rect([x],[y],[w],[h]).attr({fill: '[downcolor]' });\nvar uprect = paper.rect([x],[y],[w]*([percent])\/100,[h]).attr({fill: '[upcolor]','stroke-width':0 });\nvar text = paper.text([x]+[w]\/2, [y]+[h]\/2, '[text]').attr({'font-size': [h]\/2, fill: '[colortext]', 'font-family': '[font]', 'stroke-width': 0.5, 'stroke-opacity': 0.5, 'font-weight': 200, 'text-anchor': '[anchor]' });\nif( '[anchor]' == 'end') text.attr({x: [x]+[w]});\nif( '[anchor]' == 'begin') text.attr({x: [x]});\nvar box = text.getBBox(); var shrink = Math.min([w]\/box.width,[h]\/box.height);\nif(shrink < 1) text.attr({'font-size': [h]\/2*shrink});\ntext.mouseover( function(){ document.body.style.cursor = 'pointer'; });\ntext.mouseout( function(){ document.body.style.cursor = 'default'; });",
+"code1Click":"",
+"codeLib":"",
+"onServer":false,
+"id":"d4f762e6-c626-46f4-9598-2d891fda4437"
+},
+{
+"type":"Картинка",
+"left":0,
+"top":1,
+"right":0,
+"bottom":1,
+"code1C":"Результат.Вставить(\"img_w\", 160);\nРезультат.Вставить(\"img_h\", 141);\nРезультат.Вставить(\"src\", \"http:\/\/infostart.ru\/upload\/iblock\/a84\/a84df75685df1fefdf49dea465f9c3c3.png\");\nРезультат.Вставить(\"text\", \"Картинка\");\n\n",
+"codeDraw":"var img =  paper.image('[src]', [x]+[w]\/2-[img_w]\/2, [y]+[h]\/2-[img_h]\/2, [img_w], [img_h]);\nvar text = paper.text([x]+[w]\/2, [y]+3*[h]\/4, '[text]').attr({'font-size': [h]\/4, fill: '[color]', 'font-family': '[font]', 'stroke-width': 0.5, 'stroke-opacity': 0.5, 'font-weight': 200, 'text-anchor': '[anchor]' }); \nvar box = text.getBBox(); var shrink = Math.min([w]\/box.width,[h]\/box.height);  \nif(shrink < 1) text.attr({'font-size': [h]\/4*shrink});\n",
+"code1Click":"",
+"codeLib":"",
+"onServer":false,
+"id":"ebed0f9b-a343-412c-b230-6ec5154b9502"
+},
+{
+"type":"Пояснение с цветом",
+"left":1,
+"top":1,
+"right":1,
+"bottom":1,
+"code1C":"Результат.Вставить(\"text\", \"Пояснение\");\nРезультат.Вставить(\"bgcolor\", \"#F0F0F0\");\nРезультат.Вставить(\"colortext\", \"black\");\nРезультат.Вставить(\"color\", \"red\");",
+"codeDraw":"var rect = paper.rect([x],[y],[w],[h]).attr({fill: '[bgcolor]'});\nvar wh = Math.min([w]\/2,[h])\/2;\nvar rect = paper.rect([x]+[w]\/4-wh\/2,[y]+[h]\/2-wh\/2,wh,wh).attr({fill: '[color]'});\nvar text = paper.text([x]+3*[w]\/4, [y]+[h]\/2, '[text]').attr({'font-size': wh, fill: '[colortext]', 'font-family': 'Tahoma', 'stroke-width': 0, 'stroke-opacity': 0, 'font-weight': 100 });\nvar box = text.getBBox(); \nif(box.width>[w]\/2) var shrink = [w]\/2\/box.width;\nif(shrink < 1) text.attr({'font-size': wh*shrink});",
+"code1Click":"",
+"codeLib":"",
+"onServer":false,
+"id":"9964fe75-06c9-4857-a1e6-4b00cf1ca29a"
+}
+]
+}

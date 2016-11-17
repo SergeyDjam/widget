@@ -1,0 +1,112 @@
+﻿{
+"stepsX":1,
+"stepsY":11,
+"online_email":"",
+"online": true,
+"widgets":[
+{
+"НомерСтроки":1,
+"type":"Инфо",
+"left":0,
+"top":1,
+"right":0,
+"bottom":1,
+"code1C":"Если НЕ Значения.Свойство(\"ТекДата\") Тогда\n	Значения.Вставить(\"ТекДата\", ТекущаяДата());\nКонецЕсли;\nТекст = Формат(Значения[\"ТекДата\"],\"ДФ=dd.MM.yyyy\");\nРезультат.Вставить(\"text\", Текст);\nРезультат.Вставить(\"bgcolor\", \"white\");\nРезультат.Вставить(\"color\", \"black\");",
+"codeDraw":"var rect = paper.rect([x],[y],[w],[h]).attr({fill: '[bgcolor]' });\nvar text = paper.text([x]+[w]\/2, [y]+[h]\/2, '[text]').attr({'font-size': [h]\/2, fill: '[color]', 'font-family': '[font]', 'stroke-width': 0.5, 'stroke-opacity': 0.5, 'font-weight': 200, 'text-anchor': '[anchor]' }); \nif( '[anchor]' == 'end') text.attr({x: [x]+[w]});\nif( '[anchor]' == 'begin') text.attr({x: [x]});\nvar box = text.getBBox(); var shrink = Math.min([w]\/box.width,[h]\/box.height);  \nif(shrink < 1) text.attr({'font-size': [h]\/2*shrink});\ntext.mouseover( function(){ document.body.style.cursor = 'pointer'; });\ntext.mouseout( function(){ document.body.style.cursor = 'default'; });",
+"code1Click":"ВвестиЗначение1С(\"ТекДата\", \"Введите дату отчета\");\n",
+"id":"0bfd6a05-6138-4860-a399-eb55f5824ce0",
+"onServer":false
+},
+{
+"НомерСтроки":2,
+"type":"Инфо",
+"left":0,
+"top":4,
+"right":0,
+"bottom":4,
+"code1C":"Если Метаданные.РегистрыСведений.Найти(\"КурсыВалют\") = Неопределено Тогда\n	Курс = \"База не содержит РегистрСведений.КурсыВалют\";	\nИначе\n	ТекДата = Значения[\"ТекДата\"];\n	Если НЕ Значения.Свойство(\"Валюта\") Тогда\n		Значения.Вставить(\"Валюта\", Справочники.Валюты.НайтиПоКоду(\"840\"));\n	КонецЕсли;	\n\n	Отбор = Новый Структура(\"Валюта\", Значения[\"Валюта\"]);\n	Курс = РегистрыСведений.КурсыВалют.СрезПоследних(ТекДата, Отбор);\n	Если Курс.Количество() > 0 Тогда\n		Курс = \"\"+Значения[\"Валюта\"]+\": \"+Окр(Курс[0].Курс,2);\n	Иначе\n    	Курс = \"-\";\n	КонецЕсли;	\nКонецЕсли;	\nРезультат.Вставить(\"text\", \"\"+Курс);\nРезультат.Вставить(\"bgcolor\", \"white\");\nРезультат.Вставить(\"color\", \"black\");",
+"codeDraw":"var rect = paper.rect([x],[y],[w],[h]).attr({fill: '[bgcolor]' });\nvar text = paper.text([x]+[w]\/2, [y]+[h]\/2, '[text]').attr({'font-size': [h]\/2, fill: '[color]', 'font-family': '[font]', 'stroke-width': 0.5, 'stroke-opacity': 0.5, 'font-weight': 200, 'text-anchor': '[anchor]' }); \nif( '[anchor]' == 'end') text.attr({x: [x]+[w]});\nif( '[anchor]' == 'begin') text.attr({x: [x]});\nvar box = text.getBBox(); var shrink = Math.min([w]\/box.width,[h]\/box.height);  \ntext.mouseover( function(){ document.body.style.cursor = 'pointer'; });\ntext.mouseout( function(){ document.body.style.cursor = 'default'; });\nif(shrink < 1) text.attr({'font-size': [h]\/2*shrink});",
+"code1Click":"ВвестиЗначение1С(\"Валюта\", \"Введите валюта для курса\");\n\n	",
+"id":"75487850-6d1d-4e2c-9dd4-464cca6ad135",
+"onServer":true
+},
+{
+"НомерСтроки":3,
+"type":"Инфо",
+"left":0,
+"top":6,
+"right":0,
+"bottom":6,
+"code1C":"Текст = \" Счетов выписано: \";\nРезультат.Вставить(\"text\", Текст);\nРезультат.Вставить(\"bgcolor\", \"white\");\nРезультат.Вставить(\"color\", \"black\");",
+"codeDraw":"var rect = paper.rect([x],[y],[w],[h]).attr({fill: '[bgcolor]' });\nvar text = paper.text([x]+[w]\/2, [y]+[h]\/2, '[text]').attr({'font-size': [h]\/2, fill: '[color]', 'font-family': '[font]', 'stroke-width': 0.5, 'stroke-opacity': 0.5, 'font-weight': 200, 'text-anchor': '[anchor]' }); \nif( '[anchor]' == 'end') text.attr({x: [x]+[w]});\nif( '[anchor]' == 'begin') text.attr({x: [x]});\nvar box = text.getBBox(); var shrink = Math.min([w]\/box.width,[h]\/box.height);  \nif(shrink < 1) text.attr({'font-size': [h]\/2*shrink});",
+"code1Click":"",
+"id":"b8eb57e4-3de7-463f-bec8-70f694726a70",
+"onServer":false
+},
+{
+"НомерСтроки":4,
+"type":"Инфо",
+"left":0,
+"top":7,
+"right":0,
+"bottom":7,
+"code1C":"Цвет = \"white\";\nЕсли Метаданные.Документы.Найти(\"СчетНаОплатуПокупателю\") = Неопределено Тогда\n	Колво = \"База не содержит документ СчетНаОплатуПокупателю\";	\nИначе\n\nЗапрос = Новый Запрос;\nЗапрос.Текст = \"ВЫБРАТЬ\n               |	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ СчетНаОплатуПокупателю.Ссылка) КАК Колво\n			   |ИЗ\n               |	Документ.СчетНаОплатуПокупателю КАК СчетНаОплатуПокупателю\n               |ГДЕ\n               |	СчетНаОплатуПокупателю.Дата МЕЖДУ &ДатаНачало И &ДатаОкончания\";\nЗапрос.УстановитьПараметр(\"ДатаНачало\", НачалоДня(Значения[\"ТекДата\"]));\nЗапрос.УстановитьПараметр(\"ДатаОкончания\", КонецДня(Значения[\"ТекДата\"]));\nВыборка = Запрос. Выполнить().Выбрать();\nКолво = 0;\nЕсли Выборка.Следующий() Тогда\n	Колво = Выборка.Колво;\nКонецЕсли;\n\nЦвет = \"red\";\nЕсли Колво > 0 Тогда\n	Цвет = \"yellow\";			\nИначеЕсли Колво > 4 Тогда\n	Цвет = \"green\";\nКонецЕсли;\nКонецЕсли;\n\nРезультат.Вставить(\"text\", \"\"+Колво);\nРезультат.Вставить(\"bgcolor\", Цвет);\nРезультат.Вставить(\"color\", \"black\");",
+"codeDraw":"var rect = paper.rect([x],[y],[w],[h]).attr({fill: '[bgcolor]' });\nvar text = paper.text([x]+[w]\/2, [y]+[h]\/2, '[text]').attr({'font-size': [h]\/2, fill: '[color]', 'font-family': '[font]', 'stroke-width': 0.5, 'stroke-opacity': 0.5, 'font-weight': 200, 'text-anchor': '[anchor]' }); \nif( '[anchor]' == 'end') text.attr({x: [x]+[w]});\nif( '[anchor]' == 'begin') text.attr({x: [x]});\nvar box = text.getBBox(); var shrink = Math.min([w]\/box.width,[h]\/box.height);  \nif(shrink < 1) text.attr({'font-size': [h]\/2*shrink});\ntext.mouseover( function(){ document.body.style.cursor = 'pointer'; });\ntext.mouseout( function(){ document.body.style.cursor = 'default'; });",
+"code1Click":"ФормаСписка = ПолучитьФорму(\"Документ.СчетНаОплатуПокупателю.ФормаСписка\");\nФормаСписка.Открыть();\n",
+"id":"550930b5-4a40-483c-8721-9510ca7d4b7d",
+"onServer":true
+},
+{
+"НомерСтроки":5,
+"type":"Инфо",
+"left":0,
+"top":3,
+"right":0,
+"bottom":3,
+"code1C":"Текст = \"Курс\";\nРезультат.Вставить(\"text\", Текст);\nРезультат.Вставить(\"bgcolor\", \"white\");\nРезультат.Вставить(\"color\", \"black\");",
+"codeDraw":"var rect = paper.rect([x],[y],[w],[h]).attr({fill: '[bgcolor]' });\nvar text = paper.text([x]+[w]\/2, [y]+[h]\/2, '[text]').attr({'font-size': [h]\/2, fill: '[color]', 'font-family': '[font]', 'stroke-width': 0.5, 'stroke-opacity': 0.5, 'font-weight': 200, 'text-anchor': '[anchor]' }); \nif( '[anchor]' == 'end') text.attr({x: [x]+[w]});\nif( '[anchor]' == 'begin') text.attr({x: [x]});\nvar box = text.getBBox(); var shrink = Math.min([w]\/box.width,[h]\/box.height);  \nif(shrink < 1) text.attr({'font-size': [h]\/2*shrink});",
+"code1Click":"",
+"id":"299246b4-89e4-4f4b-b3b1-c316efc55363",
+"onServer":false
+},
+{
+"НомерСтроки":6,
+"type":"Инфо",
+"left":0,
+"top":0,
+"right":0,
+"bottom":0,
+"code1C":"Текст = \"Дата отчета\";\nРезультат.Вставить(\"text\", Текст);\nРезультат.Вставить(\"bgcolor\", \"white\");\nРезультат.Вставить(\"color\", \"black\");",
+"codeDraw":"var rect = paper.rect([x],[y],[w],[h]).attr({fill: '[bgcolor]' });\nvar text = paper.text([x]+[w]\/2, [y]+[h]\/2, '[text]').attr({'font-size': [h]\/2, fill: '[color]', 'font-family': '[font]', 'stroke-width': 0.5, 'stroke-opacity': 0.5, 'font-weight': 200, 'text-anchor': '[anchor]' }); \nif( '[anchor]' == 'end') text.attr({x: [x]+[w]});\nif( '[anchor]' == 'begin') text.attr({x: [x]});\nvar box = text.getBBox(); var shrink = Math.min([w]\/box.width,[h]\/box.height);  \nif(shrink < 1) text.attr({'font-size': [h]\/2*shrink});",
+"code1Click":"",
+"id":"314f0f89-9f8d-47dc-872a-fdb75cd9de05",
+"onServer":false
+},
+{
+"НомерСтроки":7,
+"type":"Инфо",
+"left":0,
+"top":9,
+"right":0,
+"bottom":9,
+"code1C":"Текст = \"Продано на (руб.)\";\nРезультат.Вставить(\"text\", Текст);\nРезультат.Вставить(\"bgcolor\", \"white\");\nРезультат.Вставить(\"color\", \"black\");",
+"codeDraw":"var rect = paper.rect([x],[y],[w],[h]).attr({fill: '[bgcolor]' });\nvar text = paper.text([x]+[w]\/2, [y]+[h]\/2, '[text]').attr({'font-size': [h]\/2, fill: '[color]', 'font-family': '[font]', 'stroke-width': 0.5, 'stroke-opacity': 0.5, 'font-weight': 200, 'text-anchor': '[anchor]' }); \nif( '[anchor]' == 'end') text.attr({x: [x]+[w]});\nif( '[anchor]' == 'begin') text.attr({x: [x]});\nvar box = text.getBBox(); var shrink = Math.min([w]\/box.width,[h]\/box.height);  \nif(shrink < 1) text.attr({'font-size': [h]\/2*shrink});",
+"code1Click":"",
+"id":"8213b35a-c329-4b7a-b81d-9bbc9788b15a",
+"onServer":false
+},
+{
+"НомерСтроки":8,
+"type":"Инфо",
+"left":0,
+"top":10,
+"right":0,
+"bottom":10,
+"code1C":"Если Метаданные.Документы.Найти(\"РеализацияТоваровУслуг\") = Неопределено Тогда\n	Сумма = \"База не содержит документы РеализацияТоваровУслуг\";	\nИначе\n	Запрос = Новый Запрос;\n	Запрос.Текст = \"ВЫБРАТЬ\n	               |	СУММА(РеализацияТоваровУслуг.СуммаДокумента) КАК СуммаДокумента\n	               |ИЗ\n	               |	Документ.РеализацияТоваровУслуг КАК РеализацияТоваровУслуг\n	               |ГДЕ\n	               |	РеализацияТоваровУслуг.Дата МЕЖДУ &ДатаНачало И &ДатаОкончания\n			       |	И РеализацияТоваровУслуг.Проведен\";\n    Запрос.УстановитьПараметр(\"ДатаНачало\", НачалоДня(Значения[\"ТекДата\"]));\n    Запрос.УстановитьПараметр(\"ДатаОкончания\", КонецДня(Значения[\"ТекДата\"]));\n    Выборка = Запрос. Выполнить().Выбрать();\n	Сумма = \"0,00\";\n	Если Выборка.Следующий() Тогда\n		Если ЗначениеЗаполнено(Выборка.СуммаДокумента) Тогда\n			Сумма = Формат(Выборка.СуммаДокумента,\"ЧДЦ=2; ЧН=-\");\n		КонецЕсли	\n	КонецЕсли;\nКонецЕсли;\nРезультат.Вставить(\"text\", Сумма);\nРезультат.Вставить(\"bgcolor\", \"white\");\nРезультат.Вставить(\"color\", \"black\");",
+"codeDraw":"var rect = paper.rect([x],[y],[w],[h]).attr({fill: '[bgcolor]' });\nvar text = paper.text([x]+[w]\/2, [y]+[h]\/2, '[text]').attr({'font-size': [h]\/2, fill: '[color]', 'font-family': '[font]', 'stroke-width': 0.5, 'stroke-opacity': 0.5, 'font-weight': 200, 'text-anchor': '[anchor]' }); \nif( '[anchor]' == 'end') text.attr({x: [x]+[w]});\nif( '[anchor]' == 'begin') text.attr({x: [x]});\nvar box = text.getBBox(); var shrink = Math.min([w]\/box.width,[h]\/box.height);  \nif(shrink < 1) text.attr({'font-size': [h]\/2*shrink});\ntext.mouseover( function(){ document.body.style.cursor = 'pointer'; });\ntext.mouseout( function(){ document.body.style.cursor = 'default'; });",
+"code1Click":"ОткрытьФорму(\"Документ.РеализацияТоваровУслуг.ФормаСписка\");",
+"id":"955177bd-db59-46b6-b236-86692115ec09",
+"onServer":true
+}
+]
+}
