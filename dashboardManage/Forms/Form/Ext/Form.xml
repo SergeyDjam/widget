@@ -657,6 +657,53 @@
 											</Title>
 											<ExtendedTooltip name="Элемент_ЗагрузитьРасширеннаяПодсказка" id="148"/>
 										</Button>
+										<InputField name="one_type" id="187">
+											<DataPath>one_type</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Type</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Тип</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="one_typeКонтекстноеМеню" id="188"/>
+											<ExtendedTooltip name="one_typeРасширеннаяПодсказка" id="189"/>
+										</InputField>
+										<CheckBoxField name="one_onServer" id="177">
+											<DataPath>one_onServer</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Run on server</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполнять на сервере:</v8:content>
+												</v8:item>
+											</Title>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="one_onServerКонтекстноеМеню" id="178"/>
+											<ExtendedTooltip name="one_onServerРасширеннаяПодсказка" id="179"/>
+										</CheckBoxField>
+										<Button name="Элемент_Выполнить" id="180">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.Элемент_Выполнить</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Execute</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполнить</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="Элемент_ВыполнитьРасширеннаяПодсказка" id="181"/>
+										</Button>
 									</ChildItems>
 								</UsualGroup>
 								<UsualGroup name="Группа6" id="162">
@@ -672,90 +719,16 @@
 											<ContextMenu name="one_htmlКонтекстноеМеню" id="158"/>
 											<ExtendedTooltip name="one_htmlРасширеннаяПодсказка" id="159"/>
 										</HTMLDocumentField>
-										<UsualGroup name="Группа8" id="175">
-											<Group>Vertical</Group>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="Группа8РасширеннаяПодсказка" id="176"/>
-											<ChildItems>
-												<UsualGroup name="Группа9" id="182">
-													<Group>Horizontal</Group>
-													<ShowTitle>false</ShowTitle>
-													<ExtendedTooltip name="Группа9РасширеннаяПодсказка" id="183"/>
-													<ChildItems>
-														<InputField name="one_type" id="187">
-															<DataPath>one_type</DataPath>
-															<ReadOnly>true</ReadOnly>
-															<Title>
-																<v8:item>
-																	<v8:lang>en</v8:lang>
-																	<v8:content>Type</v8:content>
-																</v8:item>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Тип</v8:content>
-																</v8:item>
-															</Title>
-															<ContextMenu name="one_typeКонтекстноеМеню" id="188"/>
-															<ExtendedTooltip name="one_typeРасширеннаяПодсказка" id="189"/>
-														</InputField>
-														<CheckBoxField name="one_onServer" id="177">
-															<DataPath>one_onServer</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>en</v8:lang>
-																	<v8:content>Run on server</v8:content>
-																</v8:item>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Выполнять на сервере:</v8:content>
-																</v8:item>
-															</Title>
-															<CheckBoxType>Auto</CheckBoxType>
-															<ContextMenu name="one_onServerКонтекстноеМеню" id="178"/>
-															<ExtendedTooltip name="one_onServerРасширеннаяПодсказка" id="179"/>
-														</CheckBoxField>
-														<LabelDecoration name="Декорация5" id="184">
-															<HorizontalStretch>true</HorizontalStretch>
-															<ContextMenu name="Декорация5КонтекстноеМеню" id="185"/>
-															<ExtendedTooltip name="Декорация5РасширеннаяПодсказка" id="186"/>
-														</LabelDecoration>
-														<Button name="Элемент_Выполнить" id="180">
-															<Type>UsualButton</Type>
-															<CommandName>Form.Command.Элемент_Выполнить</CommandName>
-															<Title>
-																<v8:item>
-																	<v8:lang>en</v8:lang>
-																	<v8:content>Execute</v8:content>
-																</v8:item>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Выполнить</v8:content>
-																</v8:item>
-															</Title>
-															<ExtendedTooltip name="Элемент_ВыполнитьРасширеннаяПодсказка" id="181"/>
-														</Button>
-													</ChildItems>
-												</UsualGroup>
-												<UsualGroup name="Группа11" id="251">
-													<HorizontalStretch>true</HorizontalStretch>
-													<Group>Horizontal</Group>
-													<ShowTitle>false</ShowTitle>
-													<ExtendedTooltip name="Группа11РасширеннаяПодсказка" id="252"/>
-													<ChildItems>
-														<InputField name="one_code1C" id="166">
-															<DataPath>one_code1C</DataPath>
-															<TitleLocation>None</TitleLocation>
-															<Width>100</Width>
-															<HorizontalStretch>true</HorizontalStretch>
-															<MultiLine>true</MultiLine>
-															<ExtendedEdit>true</ExtendedEdit>
-															<ContextMenu name="one_code1CКонтекстноеМеню" id="167"/>
-															<ExtendedTooltip name="one_code1CРасширеннаяПодсказка" id="168"/>
-														</InputField>
-													</ChildItems>
-												</UsualGroup>
-											</ChildItems>
-										</UsualGroup>
+										<InputField name="one_code1C" id="166">
+											<DataPath>one_code1C</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>100</Width>
+											<HorizontalStretch>true</HorizontalStretch>
+											<MultiLine>true</MultiLine>
+											<ExtendedEdit>true</ExtendedEdit>
+											<ContextMenu name="one_code1CКонтекстноеМеню" id="167"/>
+											<ExtendedTooltip name="one_code1CРасширеннаяПодсказка" id="168"/>
+										</InputField>
 									</ChildItems>
 								</UsualGroup>
 								<UsualGroup name="Группа7" id="164">
