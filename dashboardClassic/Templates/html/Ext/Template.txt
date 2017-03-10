@@ -1,8 +1,10 @@
 ﻿<html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
 </head>
-<body scroll='no' onmousemove="onmousemove(event)">
+<body id="body" scroll='no' onmousemove="onmousemove(event)">
+<div id='canvas'></div>
+<table id="example" class="display" width="100%"></table>   
 <style>
 ::-webkit-scrollbar {
       display: none; 
@@ -11,12 +13,12 @@
 <style>
 <!-- CodeStyle -->
 </style>
-<!-- html -->   
-<!-- RefLibs -->
+<!-- codeHTML -->
 <script type=text/javascript>
 <!-- CodeLibs -->
 var paper;
-
+var width  = 0;
+var height = 0;
 var rect_select;
 onmousemove = function(event){
 	<!-- RectSelectMove -->
@@ -31,7 +33,6 @@ window.onresize = function(){
 }
 
 var mainFunction = function(init) {
-
     var w = window,
     d = document,
     e = d.documentElement,
@@ -39,17 +40,9 @@ var mainFunction = function(init) {
     width = w.innerWidth || e.clientWidth || g.clientWidth;
     height = w.innerHeight|| e.clientHeight|| g.clientHeight;
     if(width  != 0){
-      //resize for linux client and old webkit
-      if(navigator.userAgent.indexOf("8.0 Safari/538.15")  !== -1 ){
-        width = width - 35;
-        height = height - 15; 
-      }
-      if(init){  paper = Raphael(0,0, width, height);}
-      else{
-          paper.clear();
-          paper.setSize(width, height);
-      }
-      //TODO_PAGE_CONTEXT
+      if(!init) paper.remove();
+      paper = SVG('canvas');
+      paper.size(width, height);
       <!-- DrawGrid -->
       <!-- DrawWidgets -->
       <!-- CursorHandle -->
@@ -57,5 +50,6 @@ var mainFunction = function(init) {
     }
 }
 </script>
+<!-- RefLibs -->
 </body>
 </html>

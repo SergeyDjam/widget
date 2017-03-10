@@ -121,6 +121,7 @@
 										</Button>
 										<Button name="Данные_ИмпортГаллерея" id="253">
 											<Type>CommandBarButton</Type>
+											<Visible>false</Visible>
 											<CommandName>Form.Command.Данные_ИмпортГаллерея</CommandName>
 											<Title>
 												<v8:item>
@@ -133,21 +134,6 @@
 												</v8:item>
 											</Title>
 											<ExtendedTooltip name="Данные_ИмпортГаллереяРасширеннаяПодсказка" id="254"/>
-										</Button>
-										<Button name="Данные_ИмпортДемо" id="155">
-											<Type>CommandBarButton</Type>
-											<CommandName>Form.Command.Данные_ИмпортДемо</CommandName>
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Load Demo Example</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Загрузить демо пример</v8:content>
-												</v8:item>
-											</Title>
-											<ExtendedTooltip name="Данные_ИмпортДемоРасширеннаяПодсказка" id="156"/>
 										</Button>
 									</ChildItems>
 								</CommandBar>
@@ -163,40 +149,58 @@
 									<ContextMenu name="online_statusКонтекстноеМеню" id="32"/>
 									<ExtendedTooltip name="online_statusРасширеннаяПодсказка" id="93"/>
 								</LabelField>
-								<CheckBoxField name="online" id="25">
-									<DataPath>online</DataPath>
+								<UsualGroup name="group_online" id="263">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>online</v8:content>
+											<v8:content>Group online</v8:content>
 										</v8:item>
 									</Title>
-									<TitleLocation>Left</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="onlineКонтекстноеМеню" id="26"/>
-									<ExtendedTooltip name="onlineРасширеннаяПодсказка" id="92"/>
-									<Events>
-										<Event name="OnChange">onlineПриИзменении</Event>
-									</Events>
-								</CheckBoxField>
-								<InputField name="online_email" id="28">
-									<DataPath>online_email</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>email</v8:content>
-										</v8:item>
+									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>email</v8:content>
+											<v8:content>Group online</v8:content>
 										</v8:item>
-									</Title>
-									<ContextMenu name="online_emailКонтекстноеМеню" id="29"/>
-									<ExtendedTooltip name="online_emailРасширеннаяПодсказка" id="91"/>
-									<Events>
-										<Event name="OnChange">online_emailПриИзменении</Event>
-									</Events>
-								</InputField>
+									</ToolTip>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="group_onlineРасширеннаяПодсказка" id="264"/>
+									<ChildItems>
+										<CheckBoxField name="online" id="25">
+											<DataPath>online</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>online</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Left</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="onlineКонтекстноеМеню" id="26"/>
+											<ExtendedTooltip name="onlineРасширеннаяПодсказка" id="92"/>
+											<Events>
+												<Event name="OnChange">onlineПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<InputField name="online_email" id="28">
+											<DataPath>online_email</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>email</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>email</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="online_emailКонтекстноеМеню" id="29"/>
+											<ExtendedTooltip name="online_emailРасширеннаяПодсказка" id="91"/>
+											<Events>
+												<Event name="OnChange">online_emailПриИзменении</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
 						<HTMLDocumentField name="html" id="5">
@@ -205,6 +209,7 @@
 							<ContextMenu name="htmlКонтекстноеМеню" id="6"/>
 							<ExtendedTooltip name="htmlРасширеннаяПодсказка" id="94"/>
 							<Events>
+								<Event name="DocumentComplete">htmlДокументСформирован</Event>
 								<Event name="OnClick">htmlПриНажатии</Event>
 							</Events>
 						</HTMLDocumentField>
@@ -553,6 +558,7 @@
 							<ContextMenu name="html_settingsКонтекстноеМеню" id="21"/>
 							<ExtendedTooltip name="html_settingsРасширеннаяПодсказка" id="107"/>
 							<Events>
+								<Event name="DocumentComplete">htmlДокументСформирован</Event>
 								<Event name="OnClick">html_settingsПриНажатии</Event>
 							</Events>
 						</HTMLDocumentField>
@@ -864,6 +870,17 @@
 									<ContextMenu name="НадписьВыбораКонтекстноеМеню" id="200"/>
 									<ExtendedTooltip name="НадписьВыбораРасширеннаяПодсказка" id="201"/>
 								</LabelDecoration>
+								<Button name="Выбрать" id="261">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.Элемент_Выбрать</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Выбрать</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ВыбратьРасширеннаяПодсказка" id="262"/>
+								</Button>
 								<Button name="Элемент_Предыдущий" id="259">
 									<Type>UsualButton</Type>
 									<CommandName>Form.Command.Элемент_Предыдущий</CommandName>
@@ -913,6 +930,7 @@
 							<ContextMenu name="html_wigetsКонтекстноеМеню" id="193"/>
 							<ExtendedTooltip name="html_wigetsРасширеннаяПодсказка" id="194"/>
 							<Events>
+								<Event name="DocumentComplete">htmlДокументСформирован</Event>
 								<Event name="OnClick">html_wigetsПриНажатии</Event>
 							</Events>
 						</HTMLDocumentField>
@@ -958,11 +976,11 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="raphaeljs" id="6">
+		<Attribute name="svgjs" id="6">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Raphaeljs</v8:content>
+					<v8:content>Svgjs</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -2086,6 +2104,38 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="HTMLWidth" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>HTMLWidth</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="HTMLHeight" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>HTMLHeight</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="Настройка_Открыть" id="1">
@@ -2312,21 +2362,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>Элемент_Загрузить</Action>
-		</Command>
-		<Command name="Данные_ИмпортДемо" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Данные импорт демо</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Данные импорт демо</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>Данные_ИмпортДемо</Action>
 		</Command>
 		<Command name="Элемент_Выполнить" id="10">
 			<Title>
@@ -2657,6 +2692,21 @@
 				</v8:item>
 			</ToolTip>
 			<Action>Элемент_Предыдущий</Action>
+		</Command>
+		<Command name="Элемент_Выбрать" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Элемент выбрать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Элемент выбрать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Элемент_Выбрать</Action>
 		</Command>
 	</Commands>
 </Form>

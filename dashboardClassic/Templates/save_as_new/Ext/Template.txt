@@ -5,14 +5,13 @@
 "online":false,
 "widgets":[
 {
-"НомерСтроки":1,
 "type":"Текст",
 "left":0,
 "top":0,
 "right":0,
 "bottom":0,
-"code1C":"Текст = \"Сохранить данные\\n в новом поле\";\nРезультат.Вставить(\"text\", Текст);\nРезультат.Вставить(\"bgcolor\", \"white\");\nРезультат.Вставить(\"color\", \"black\");",
-"codeDraw":"var rect = paper.rect([x],[y],[w],[h]).attr({fill: '[bgcolor]' });\nvar text = paper.text([x]+[w]\/2, [y]+[h]\/2, '[text]').attr({'font-size': [h]\/2, fill: '[color]', 'font-family': '[font]', 'stroke-width': 0.5, 'stroke-opacity': 0.5, 'font-weight': 200, 'text-anchor': '[anchor]' }); \nif( '[anchor]' == 'end') text.attr({x: [x]+[w]});\nif( '[anchor]' == 'begin') text.attr({x: [x]});\nvar box = text.getBBox(); var shrink = Math.min([w]\/box.width,[h]\/box.height);  \nif(shrink < 1) text.attr({'font-size': [h]\/2*shrink});",
+"code1C":"Текст = \"Сохранить данные\\n в новом поле\";\nРезультат.Вставить(\"text\", Текст);\nРезультат.Вставить(\"color\", \"green\");\nРезультат.Вставить(\"bgcolor\", \"gainsboro\");\nРезультат.Вставить(\"anchor\", \"center\");",
+"codeDraw":"if('[bgcolor]')\n    var bgrect = paper.rect([w],[h]).move([x],[y]).style('fill:[bgcolor];stroke:none;stroke-width:0');\nvar text = paper.text('[text]').x([x]).y([y]).attr({'font-size': [h]\/2, fill: '[color]' });\nvar box = text.bbox(); \nvar shrink = Math.min([w]\/box.width,[h]\/box.height);  \nif(shrink < 1){\n    text.attr({'font-size': [h]\/2*shrink*0.95});\n    box = text.bbox(); \n}    \nif('[anchor]'){\n    if('[anchor]' == 'center') text.move([x]+([w]-box.width)\/2,[y]+([h]-box.height)\/2);\n    if('[anchor]' == 'right') text.move([x]+([w] - box.width),[y]+([h]-box.height)\/2);  \n}    ",
 "code1Click":"",
 "codeLib":"",
 "onServer":false,
